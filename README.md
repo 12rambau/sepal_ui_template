@@ -5,6 +5,8 @@
 Fake application using the `sepal_ui` framework to create an interactive **Voila** dashboard.
 Go to the [sepal_ui repository](#) for more information about the components used in this template.
 
+![full_app](./doc/img/full_app.png)
+
 ## Requirement 
 
 Several libs that may not be installed on your local sepal:
