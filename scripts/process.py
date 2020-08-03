@@ -1,6 +1,5 @@
 import time
 import sys
-sys.path.append("..")
 from sepal_ui.scripts import utils
 import numpy as np
 import pandas as pd
@@ -37,19 +36,12 @@ def run_my_process(output, percentage, name):
     df = pd.DataFrame(np.random.randint(0,percentage,size=(percentage, 4)), columns=list('ABCD'))
     df.to_csv(pathname, index=False)
     
-    #create a downloadable link
-    result_path = os.path.expanduser(pathname)
-    home_path = os.path.expanduser('~')
-    download_path='/'+os.path.relpath(result_path,home_path)
-    
-    link = "/api/files/download?path={}".format(download_path)
-    
     #wait for the loading button 
     time.sleep(3)
     
     utils.displayIO(output, 'Computation complete', alert_type='success')
     
-    return link
+    return pathname
 
 def create_fake_result(asset='users/bornToBeAlive/aoi_AG'):
     
