@@ -1,6 +1,5 @@
 import time
 import sys
-from sepal_ui.scripts import utils
 import numpy as np
 import pandas as pd
 import os
@@ -8,6 +7,7 @@ import shutil
 from bqplot import pyplot as plt 
 import geemap
 import ee
+from sepal_ui.mapping import SepalMap
 
 ee.Initialize()
 
@@ -17,10 +17,10 @@ def run_my_process(output, percentage, name):
     
     #variable check                      
     if percentage == None or percentage < 50:
-        utils.displayIO(output, '{} is not big enough'.format(str(percentage)), alert_type='error')
+        output.add_live_msg('{} is not big enough'.format(str(percentage)), 'error')
         return 
     if name == None:
-        utils.displayIO(output, 'Name has not been set', alert_type='error')
+        output.add_live_msg('Name has not been set', 'error')
         return
     
     #empty the tmp directory
@@ -39,7 +39,7 @@ def run_my_process(output, percentage, name):
     #wait for the loading button 
     time.sleep(3)
     
-    utils.displayIO(output, 'Computation complete', alert_type='success')
+    output.add_live_msg('Computation complete', 'success')
     
     return pathname
 
@@ -60,18 +60,10 @@ def create_fake_result(asset='users/bornToBeAlive/aoi_AG'):
     center = [0, 0]
     zoom = 2
     
-    m = geemap.Map(center=center, zoom=zoom)
-    m.clear_layers()
-    m.clear_controls()
-    m.add_basemap('SATELLITE')
-    m.add_control(geemap.ZoomControl(position='topright'))
-    m.add_control(geemap.LayersControl(position='topright'))
-    m.add_control(geemap.AttributionControl(position='bottomleft'))
-    m.add_control(geemap.ScaleControl(position='bottomleft', imperial=False))
-    
+    m = SepalMap(['SATELLITE'])    
     country = ee.FeatureCollection(asset)
     m.addLayer(country, {}, 'country')
-    m.centerObject(country, 5)
+    m.zoom_ee_object(country.geometry())
     
     return fig_hist, m
     
