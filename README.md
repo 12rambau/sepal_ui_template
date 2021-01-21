@@ -30,6 +30,6 @@ You also need to make sure that your sepal account is authorized to access your 
 ```
 $ earthengine authenticate
 ```
-`
+
 and follow the instructions.
 
