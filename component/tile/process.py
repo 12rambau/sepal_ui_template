@@ -5,6 +5,7 @@ from sepal_ui import sepalwidgets as sw
 import ipyvuetify as v
 
 from .. import scripts
+from ..message import ms
 
 # the tiles should all be heriting from the sepal_ui Tile object 
 # if you want to create extra reusable object, you can define them in an extra widget.py file 
@@ -23,14 +24,14 @@ class ProcessTile(sw.Tile):
         # create the widgets following ipyvuetify lib requirements (more information in the ipyvuetify and sepal_ui doc)
         # if you want to use them in custom function you should consider adding them in the class attirbute
         self.slider = v.Slider(
-            label       = 'Slider', 
+            label       = ms.process.slider, 
             class_      = "mt-5", 
             thumb_label = True, 
             v_model     = 0
         )
         
         self.text = v.TextField(
-            label   = 'Write text', 
+            label   = ms.process.textfield, 
             v_model = None
         )
         
@@ -51,7 +52,7 @@ class ProcessTile(sw.Tile):
         # construct the Tile with the widget we have initialized 
         super().__init__(
             id_    = "process_widget", # the id will be used to make the Tile appear and disapear
-            title  = 'Process', # the Title will be displayed on the top of the tile
+            title  = ms.process.title, # the Title will be displayed on the top of the tile
             inputs = [self.slider, self.text],
             btn    = self.btn,
             output = self.output
@@ -71,9 +72,9 @@ class ProcessTile(sw.Tile):
             
         # check that the input that you're gonna use are set 
         # this step is not mandatory but helps catching error 
-        if not self.output.check_input(self.aoi_io.get_aoi_name(), 'toto'): return widget.toggle_loading()
-        if not self.output.check_input(self.io.slider_value, 'toto'): return widget.toggle_loading()
-        if not self.output.check_input(self.io.text_value, 'toto'): return widget.toggle_loading()
+        if not self.output.check_input(self.aoi_io.get_aoi_name(), ms.process.no_aoi): return widget.toggle_loading()
+        if not self.output.check_input(self.io.slider_value, ms.process.no_slider): return widget.toggle_loading()
+        if not self.output.check_input(self.io.text_value, ms.process.no_textfield): return widget.toggle_loading()
             
         # You don't want the end user to be stuck if an error occured 
         # it's a good habit to wrap the process in a try catch statement 
@@ -91,7 +92,7 @@ class ProcessTile(sw.Tile):
             fig, m = scripts.create_fake_result(self.aoi_io.get_aoi_ee())
             
             # display them in the result tile 
-            content = [sw.DownloadBtn('tab in .csv', str(csv_path)), fig, m]  
+            content = [sw.DownloadBtn(ms.process.csv_btn, str(csv_path)), fig, m]  
             self.result_tile.set_content(content) # content of a tile can be changed dynamically 
             
             # change the io values as its a mutable object 
@@ -99,7 +100,7 @@ class ProcessTile(sw.Tile):
             self.io.csv_path = csv_path
             
             # conclude the computation with a message
-            self.output.add_live_msg('computation finished !', 'success')
+            self.output.add_live_msg(ms.process.end_computation, 'success')
             
         except Exception as e: 
             self.output.add_live_msg(str(e), 'error')

@@ -22,7 +22,7 @@ def run_my_process(output, pcnt, name):
     # error example on one variable 
     # catch errors allows you to display specific messages to your user in the output widget with the error coloring
     if pcnt < 50: 
-        raise Exception(f'{pcnt} is not big enough')
+        raise Exception(ms.process.small_slider.format(pcnt))
     
     # the file will be written in the tmp directory 
     # prefer the use of the Path object than the os.path strings as specify in PEP 8 convention
@@ -36,7 +36,7 @@ def run_my_process(output, pcnt, name):
     time.sleep(3)
     
     # let the user know that you managed to do something
-    output.add_live_msg('Computation complete', 'success')
+    output.add_live_msg(ms.process.end_computation, 'success')
     
     return pathname
 
@@ -56,7 +56,7 @@ def create_fake_result(ee_aoi):
         with plt.style.context('dark_background'):
             fig, ax = plt.subplots(figsize=(20,10))
             ax.hist(y, bins=25, color=[v.theme.themes.dark.primary], histtype='bar', stacked=True, edgecolor='black', rwidth=0.8)
-            ax.set_title('Histogram', fontweight="bold")
+            ax.set_title(ms.process.hist_title, fontweight="bold")
             
             plt.show()
     
@@ -76,13 +76,13 @@ def create_fake_result(ee_aoi):
     # here I will only clip and display a the result of this tutorial : https://developers.google.com/earth-engine/tutorials/tutorial_forest_02
     # you can do whatever GEE process to produce you image before displaying it  
     dataset = ee.Image('UMD/hansen/global_forest_change_2015').clip(ee_aoi)
-    m.addLayer(dataset, {'bands': 'treecover2000'}, 'treecover2000') # printing the forest coverage in 2000
-    m.addLayer(dataset, {'bands': ['last_b50', 'last_b40', 'last_b30']}, 'healthy vegetation') # mapping the forest in 2015
-    m.addLayer(dataset, {'bands': ['loss', 'treecover2000', 'gain']}, 'green') # map the gain and losses 
-    m.addLayer(dataset, {'bands': ['loss', 'treecover2000', 'gain'], max: [1,255,1]}, 'green update') # map the gain and losses with bright colors
+    m.addLayer(dataset, {'bands': 'treecover2000'}, ms.process.treecover2000) # printing the forest coverage in 2000
+    m.addLayer(dataset, {'bands': ['last_b50', 'last_b40', 'last_b30']}, ms.process.healthy_veg) # mapping the forest in 2015
+    m.addLayer(dataset, {'bands': ['loss', 'treecover2000', 'gain']}, ms.process.green) # map the gain and losses 
+    m.addLayer(dataset, {'bands': ['loss', 'treecover2000', 'gain'], max: [1,255,1]}, ms.process.green_update) # map the gain and losses with bright colors
 
     GainAndLoss = dataset.select('gain').And(dataset.select('loss'));
-    m.addLayer(GainAndLoss.updateMask(GainAndLoss), { 'palette': 'FF00FF'}, 'gain & loss') # map the place where gain and loss happened
+    m.addLayer(GainAndLoss.updateMask(GainAndLoss), { 'palette': 'FF00FF'}, ms.process.gain_loss) # map the place where gain and loss happened
     
     return fig_hist, m
     

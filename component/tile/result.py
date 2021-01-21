@@ -4,6 +4,8 @@
 from sepal_ui import sepalwidgets as sw
 import ipyvuetify as v
 
+from ..message import ms
+
 # create an empty result tile that will be filled with displayable plot, map, links, text
 class ResultTile(sw.Tile):
     
@@ -12,6 +14,6 @@ class ResultTile(sw.Tile):
         # note that btn and output are not a madatory attributes 
         super().__init__(
             id_ = "result_widget",
-            title = "Results",
-            inputs = ['No results to display yet']
+            title = ms.result.title,
+            inputs = [ms.result.no_result]
         )
