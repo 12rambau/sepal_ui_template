@@ -9,15 +9,19 @@ Go to the [sepal_ui repository](https://github.com/12rambau/sepal_ui) for more i
 
 ## Requirement 
 
-Several libs that may not be installed on your local sepal:
+make sure that sepal_ui is installed on your computer:
+```
+$ pip freeze | grep sepal-ui
+```
+
+The version should be > 1.0.0
+If not please install the latest stable version of the `sepal_ui` lib
 
 ```
 $ pip install sepal_ui
-$ pip install bqplot
-$ pip install geemap
-$ pip install haversine
-$ pip install ipyvuetify
 ```
+
+> Note that Sepal build is normally up to date with the sepal_ui lib
 
 You also need to make sure that your sepal account is authorized to access your earthengine account:
 
