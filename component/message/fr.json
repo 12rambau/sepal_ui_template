@@ -4,12 +4,12 @@
         "footer": "vers l'infini et au-delà \u00A9 {}",
         "drawer_item": {
             "aoi": "Sélection d'aoi",
-            "process": "Processus",
-            "result": "Resultats",
+            "default_process": "Processus",
+            "default_result": "Resultats",
             "about": "A propos"
         }
     },
-    "process": {
+    "default_process": {
         "small_slider": "{} est une trop petite valeur, utilisez une valeur > 50",
         "end_computation": "Calcul terminée",
         "hist_title": "Histograme",

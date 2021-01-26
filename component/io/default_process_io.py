@@ -3,7 +3,7 @@
 
 # in python variable are not mutable object (their value cannot be changed in a function)
 # Thus use a class to define your input and output in order to have mutable variables
-class Process:
+class DefaultProcessIo:
     def __init__(self):
         # set up your inputs
         self.slider_value = None

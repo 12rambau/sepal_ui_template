@@ -4,12 +4,12 @@
 from sepal_ui import sepalwidgets as sw
 import ipyvuetify as v
 
-from .. import scripts
-from ..message import ms
+from component import scripts
+from component.message import ms
 
 # the tiles should all be heriting from the sepal_ui Tile object 
 # if you want to create extra reusable object, you can define them in an extra widget.py file 
-class ProcessTile(sw.Tile):
+class DefaultProcessTile(sw.Tile):
     
     def __init__(self, io, aoi_io, result_tile, **kwargs):
         
@@ -17,21 +17,21 @@ class ProcessTile(sw.Tile):
         self.io = io 
         self.aoi_io = aoi_io
         
-        # as I will display my results in another tile I also link it to the result tile 
+        # as I will display my results in another tile, I need to gather this extra tile in my attributes
         self.result_tile = result_tile
         
         # create all the widgets that you want to use in the tile
         # create the widgets following ipyvuetify lib requirements (more information in the ipyvuetify and sepal_ui doc)
         # if you want to use them in custom function you should consider adding them in the class attirbute
         self.slider = v.Slider(
-            label       = ms.process.slider, 
+            label       = ms.default_process.slider, 
             class_      = "mt-5", 
             thumb_label = True, 
             v_model     = 0
         )
         
         self.text = v.TextField(
-            label   = ms.process.textfield, 
+            label   = ms.default_process.textfield, 
             v_model = None
         )
         
@@ -46,13 +46,13 @@ class ProcessTile(sw.Tile):
             .bind(self.text, self.io, 'text_value')
         
         # to launch the process you'll need a btn 
-        # here it is as a special sw widget (the message and the icon can also be customized see sepal_ui widget doc)
+        # here it is as a special sw widget (the message and the icon can also be customized, see sepal_ui widget doc)
         self.btn = sw.Btn()
         
         # construct the Tile with the widget we have initialized 
         super().__init__(
-            id_    = "process_widget", # the id will be used to make the Tile appear and disapear
-            title  = ms.process.title, # the Title will be displayed on the top of the tile
+            id_    = "default_process_tile", # the id will be used to make the Tile appear and disapear
+            title  = ms.default_process.title, # the Title will be displayed on the top of the tile
             inputs = [self.slider, self.text],
             btn    = self.btn,
             output = self.output
@@ -67,14 +67,14 @@ class ProcessTile(sw.Tile):
     def _on_run(self, widget, data, event): 
             
         # toggle the loading button
-        # toogling the btn will unsure that the user don't launch the process multiple times
+        # toogling the btn will insure that the user don't launch the process multiple times
         widget.toggle_loading()
             
         # check that the input that you're gonna use are set 
         # this step is not mandatory but helps catching error 
-        if not self.output.check_input(self.aoi_io.get_aoi_name(), ms.process.no_aoi): return widget.toggle_loading()
-        if not self.output.check_input(self.io.slider_value, ms.process.no_slider): return widget.toggle_loading()
-        if not self.output.check_input(self.io.text_value, ms.process.no_textfield): return widget.toggle_loading()
+        if not self.output.check_input(self.aoi_io.get_aoi_name(), ms.default_process.no_aoi): return widget.toggle_loading()
+        if not self.output.check_input(self.io.slider_value, ms.default_process.no_slider): return widget.toggle_loading()
+        if not self.output.check_input(self.io.text_value, ms.default_process.no_textfield): return widget.toggle_loading()
             
         # You don't want the end user to be stuck if an error occured 
         # it's a good habit to wrap the process in a try catch statement 
@@ -82,25 +82,25 @@ class ProcessTile(sw.Tile):
         # for debugging purpose, you need to silence this block to access the full traceback
         try:
             # launch any process you want, here it's defined in the scripts file
-            csv_path = scripts.run_my_process(
+            csv_path = scripts.default_csv(
                 output = self.output, 
                 pcnt   = self.io.slider_value, 
                 name   = self.io.text_value
             )
+            self.result_tile.down_btn.set_url(str(csv_path))
         
-            # create a fake pyplot and map
-            fig, m = scripts.create_fake_result(self.aoi_io.get_aoi_ee())
+            # create a fake pyplot
+            scripts.default_hist(self.result_tile.fig)
             
-            # display them in the result tile 
-            content = [sw.DownloadBtn(ms.process.csv_btn, str(csv_path)), fig, m]  
-            self.result_tile.set_content(content) # content of a tile can be changed dynamically 
+            # create maps
+            scripts.default_maps(self.aoi_io.get_aoi_ee(), self.result_tile.m)
             
             # change the io values as its a mutable object 
             # useful if the io is used as an input in another tile
             self.io.csv_path = csv_path
             
             # conclude the computation with a message
-            self.output.add_live_msg(ms.process.end_computation, 'success')
+            self.output.add_live_msg(ms.default_process.end_computation, 'success')
             
         except Exception as e: 
             self.output.add_live_msg(str(e), 'error')

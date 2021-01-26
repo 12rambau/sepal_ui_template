@@ -5,12 +5,12 @@
         "footer": "The sky is the limit \u00A9 {}",
         "drawer_item": {
             "aoi": "AOI selection",
-            "process": "Process",
-            "result": "Results",
+            "default_process": "Process",
+            "default_result": "Results",
             "about": "About"
         }
     },
-    "process": {
+    "default_process": {
         "small_slider": "{} is not big enought, please provide a value > to 50",
         "end_computation": "Computation complete",
         "hist_title": "Histogram",
