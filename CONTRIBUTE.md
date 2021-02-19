@@ -21,6 +21,12 @@ to develop in this project first fork the module in your own github folderss and
 $ git clone https://github.com/[github_account]/alert_module.git
 ```
 
+then you need to edit the git configuration to make sure that your notebooks are emptied each time you push to the distant repository
+```
+$ cd [git_repository]
+$ git config --local include.path ../.gitconfig
+```
+
 ## how to work with the issue tracker 
 
 If you find yourself wishing for a feature that doesn't exist in this module, you are probably not alone. There are bound to be others out there with similar needs. Many of the features that the module provide today have been added because our users saw the need. Open an issue on our issues list on GitHub which describes the feature you would like to see, why you need it, and how it should work.
