@@ -1,3 +1,5 @@
+![sepal_ui template](https://raw.githubusercontent.com/12rambau/sepal_ui/master/docs/img/sepal_header.png)
+
 # sepal_ui template app
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -9,27 +11,14 @@ Go to the [sepal_ui repository](https://github.com/12rambau/sepal_ui) for more i
 
 ![full_app](./doc/img/full_app.png)
 
-## Requirement 
+## Usage 
 
-make sure that sepal_ui is installed on your computer:
-```
-$ pip freeze | grep sepal-ui
-```
+This template is bound to the `module_factory` from the [sepal_ui](https://github.com/12rambau/sepal_ui) lib but it can also be used as a stand-alone app. 
 
-The version should be > 1.0.0
-If not, please install the latest stable version of the `sepal_ui` lib
-
-```
-$ pip install sepal_ui
-```
-
-> Note that Sepal build is normally up to date with the `sepal_ui` lib
-
-You also need to make sure that your sepal account is authorized to access your earthengine account:
-
+to install it simply use : 
 ```
 $ earthengine authenticate
-```
-
-and follow the instructions.
+$ git clone https://github.com/12rambau/sepal_ui_template.git
+$ cd sepal_ui_template
+$ git config --local include.path ../.gitconfig
 
