@@ -4,8 +4,8 @@
 from sepal_ui import sepalwidgets as sw
 import ipyvuetify as v
 
-from component import scripts
-from component.message import ms
+from component import scripts as cs
+from component.message import cm
 
 # the tiles should all be heriting from the sepal_ui Tile object 
 # if you want to create extra reusable object, you can define them in an extra widget.py file 
@@ -24,14 +24,14 @@ class DefaultProcessTile(sw.Tile):
         # create the widgets following ipyvuetify lib requirements (more information in the ipyvuetify and sepal_ui doc)
         # if you want to use them in custom function you should consider adding them in the class attirbute
         self.slider = v.Slider(
-            label       = ms.default_process.slider, 
+            label       = cm.default_process.slider, 
             class_      = "mt-5", 
             thumb_label = True, 
             v_model     = 0
         )
         
         self.text = v.TextField(
-            label   = ms.default_process.textfield, 
+            label   = cm.default_process.textfield, 
             v_model = None
         )
         
@@ -52,7 +52,7 @@ class DefaultProcessTile(sw.Tile):
         # construct the Tile with the widget we have initialized 
         super().__init__(
             id_    = "default_process_tile", # the id will be used to make the Tile appear and disapear
-            title  = ms.default_process.title, # the Title will be displayed on the top of the tile
+            title  = cm.default_process.title, # the Title will be displayed on the top of the tile
             inputs = [self.slider, self.text],
             btn    = self.btn,
             output = self.output
@@ -72,9 +72,9 @@ class DefaultProcessTile(sw.Tile):
             
         # check that the input that you're gonna use are set 
         # this step is not mandatory but helps catching error 
-        if not self.output.check_input(self.aoi_io.get_aoi_name(), ms.default_process.no_aoi): return widget.toggle_loading()
-        if not self.output.check_input(self.io.slider_value, ms.default_process.no_slider): return widget.toggle_loading()
-        if not self.output.check_input(self.io.text_value, ms.default_process.no_textfield): return widget.toggle_loading()
+        if not self.output.check_input(self.aoi_io.get_aoi_name(), cm.default_process.no_aoi): return widget.toggle_loading()
+        if not self.output.check_input(self.io.slider_value, cm.default_process.no_slider): return widget.toggle_loading()
+        if not self.output.check_input(self.io.text_value, cm.default_process.no_textfield): return widget.toggle_loading()
             
         # You don't want the end user to be stuck if an error occured 
         # it's a good habit to wrap the process in a try catch statement 
@@ -82,7 +82,7 @@ class DefaultProcessTile(sw.Tile):
         # for debugging purpose, you need to silence this block to access the full traceback
         try:
             # launch any process you want, here it's defined in the scripts file
-            csv_path = scripts.default_csv(
+            csv_path = cs.default_csv(
                 output = self.output, 
                 pcnt   = self.io.slider_value, 
                 name   = self.io.text_value
@@ -90,17 +90,17 @@ class DefaultProcessTile(sw.Tile):
             self.result_tile.down_btn.set_url(str(csv_path))
         
             # create a fake pyplot
-            scripts.default_hist(self.result_tile.fig)
+            cs.default_hist(self.result_tile.fig)
             
             # create maps
-            scripts.default_maps(self.aoi_io.get_aoi_ee(), self.result_tile.m)
+            cs.default_maps(self.aoi_io.get_aoi_ee(), self.result_tile.m)
             
             # change the io values as its a mutable object 
             # useful if the io is used as an input in another tile
             self.io.csv_path = csv_path
             
             # conclude the computation with a message
-            self.output.add_live_msg(ms.default_process.end_computation, 'success')
+            self.output.add_live_msg(cm.default_process.end_computation, 'success')
             
         except Exception as e: 
             self.output.add_live_msg(str(e), 'error')
