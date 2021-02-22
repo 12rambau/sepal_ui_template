@@ -6,7 +6,7 @@ from sepal_ui import mapping as sm
 from ipywidgets import Output
 import ipyvuetify as v
 
-from component.message import ms
+from component.message import cm
 
 # create an empty result tile that will be filled with displayable plot, map, links, text
 class DefaultResultTile(sw.Tile):
@@ -14,7 +14,7 @@ class DefaultResultTile(sw.Tile):
     def __init__(self, **kwargs):
         
         # the result widgets that will be used by the process tile 
-        self.down_btn = sw.DownloadBtn(ms.default_process.csv_btn)
+        self.down_btn = sw.DownloadBtn(cm.default_process.csv_btn)
         self.fig = Output()
         self.m = sm.SepalMap(['CartoDB.DarkMatter']) # you can choose in all the available basemaps of leaflet 
         
@@ -30,6 +30,6 @@ class DefaultResultTile(sw.Tile):
         # note that btn and output are not a madatory attributes 
         super().__init__(
             id_ = "default_result_tile",
-            title = ms.result.title,
+            title = cm.result.title,
             inputs = [self.down_btn, figs]
         )
