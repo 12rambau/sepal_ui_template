@@ -3,7 +3,6 @@
         "title": "Mon faux module",
         "footer": "vers l'infini et au-delà \u00A9 {}",
         "drawer_item": {
-            "aoi": "Sélection d'aoi",
             "about": "A propos"
         }
     }

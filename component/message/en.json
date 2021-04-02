@@ -4,7 +4,6 @@
         "title": "My Fake module",
         "footer": "The sky is the limit \u00A9 {}",
         "drawer_item": {
-            "aoi": "AOI selection",
             "about": "About"
         }
     }
