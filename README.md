@@ -1,4 +1,4 @@
-![sepal_ui template](https://raw.githubusercontent.com/12rambau/sepal_ui/master/docs/img/sepal_header.png)
+![sepal_ui template](https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/sepal_header.png)
 
 # sepal_ui template app
 
