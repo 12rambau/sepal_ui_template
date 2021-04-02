@@ -7,4 +7,3 @@ module_dir = Path('~','module_results').expanduser()
 module_dir.mkdir(exist_ok=True)
 
 # add all the directory that will be used in the app. 
-tmp_dir = Path('~', 'tmp').expanduser()
