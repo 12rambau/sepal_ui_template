@@ -21,6 +21,7 @@ class DefaultResultTile(sw.Tile):
         # organise them in a layout 
         figs = v.Layout(
             Row = True,
+            align_center=True,
             children = [
                 v.Flex(xs6 = True, children = [self.fig]),
                 v.Flex(xs6 = True, children = [self.m])
@@ -30,6 +31,6 @@ class DefaultResultTile(sw.Tile):
         # note that btn and output are not a madatory attributes 
         super().__init__(
             id_ = "default_result_tile",
-            title = cm.result.title,
+            title = cm.default_result.title,
             inputs = [self.down_btn, figs]
         )

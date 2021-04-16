@@ -9,7 +9,7 @@ from component.message import cm
 
 # the tiles should all be heriting from the sepal_ui Tile object 
 # if you want to create extra reusable object, you can define them in an extra widget.py file 
-class DefaultProcessTile(sw.Tile):
+class DefaultVizTile(sw.Tile):
     
     def __init__(self, io, aoi_io, result_tile, **kwargs):
         
@@ -51,7 +51,7 @@ class DefaultProcessTile(sw.Tile):
         
         # construct the Tile with the widget we have initialized 
         super().__init__(
-            id_    = "default_process_tile", # the id will be used to make the Tile appear and disapear
+            id_    = "default_viz_tile", # the id will be used to make the Tile appear and disapear
             title  = cm.default_process.title, # the Title will be displayed on the top of the tile
             inputs = [self.slider, self.text],
             btn    = self.btn,
@@ -93,11 +93,12 @@ class DefaultProcessTile(sw.Tile):
             scripts.default_hist(self.result_tile.fig)
             
             # create maps
-            scripts.default_maps(self.aoi_io.get_aoi_ee(), self.result_tile.m)
+            dataset = scripts.default_maps(self.aoi_io.get_aoi_ee(), self.result_tile.m)
             
             # change the io values as its a mutable object 
             # useful if the io is used as an input in another tile
             self.io.csv_path = csv_path
+            self.io.dataset = dataset
             
             # conclude the computation with a message
             self.output.add_live_msg(cm.default_process.end_computation, 'success')
