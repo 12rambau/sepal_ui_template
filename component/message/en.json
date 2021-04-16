@@ -7,6 +7,7 @@
             "aoi": "AOI selection",
             "default_process": "Process",
             "default_result": "Results",
+            "default_export": "Export",
             "about": "About"
         }
     },
@@ -25,10 +26,17 @@
         "no_aoi": "Please provide an AOI",
         "no_slider": "Please provide a percentage value",
         "no_textfield": "Please provide a text in the textfield",
-        "csv_btn": "Tab in .csv"
+        "csv_btn": "Tab in .csv",
+        "export": "Export dataset",
+        "no_dataset": "There are no datasets",
+        "scale": "Select resolution"
     },
-    "result": {
+    "default_result": {
         "title": "Results",
         "no_result": "No result to display yet"
+    },
+    "default_gee": {
+        "asset_exist": "The asset {} already exists",
+        "task_launched": "The task {} was launched on your GEE account"
     }
 }
