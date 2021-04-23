@@ -2,7 +2,7 @@
 
 # sepal_ui template app
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/12rambau/sepal_ui_template/blob/no_default/LICENSE)
 
 ## About 
 
