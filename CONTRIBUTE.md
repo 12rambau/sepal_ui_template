@@ -15,7 +15,7 @@ SEPAL modules are of course meant to work on the sepal plateform so you should u
 To develop in this project first fork the module in your own github repositories and clone the repository with a terminal:
 
 ```
-$ git https://github.com/12rambau/sepal_ui_template.git
+$ git clone https://github.com/12rambau/sepal_ui_template.git
 ```
 
 ## how to work with the issue tracker 
