@@ -1,6 +1,6 @@
 # SEPAL_UI_TEMPLATE
 
-First off, thank you for considering contributing to the development of this module. It's people like you that make Sepal a living platform. If it's your first time contributing on a github project take a look at this [link](http://makeapullrequest.com/) to better understand what a PR is. 
+First off, thank you for considering contributing to the development of this module. It's people like you that make SEPAL a living platform. If it's your first time contributing on a github project take a look at this [link](http://makeapullrequest.com/) to better understand what a PR is. 
 
 Following these guidelines helps to communicate that you respect the time of the developers managing and developing this open source project. In return, they should reciprocate that respect in addressing your issue, assessing changes, and helping you finalize your pull requests.
 
@@ -15,7 +15,7 @@ SEPAL modules are of course meant to work on the sepal plateform so you should u
 To develop in this project first fork the module in your own github repositories and clone the repository with a terminal:
 
 ```
-$ git clone https://github.com/[github_account]/sepal_ui_template.git
+$ git https://github.com/12rambau/sepal_ui_template.git
 ```
 
 ## how to work with the issue tracker 
