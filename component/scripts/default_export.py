@@ -2,22 +2,21 @@ from pathlib import Path
 
 import ee
 from sepal_ui.scripts import gee
-from sepal_ui.scripts.run_aoi_selection import isAsset
 
 ee.Initialize()
 
-def export_dataset(aoi_io, scale, dataset):
+def export_dataset(aoi_model, scale, dataset):
     """export the given dataset as an asset using the provided scale cliped on the aoi_io"""
     
     # create a filename out of the aoi name 
-    filename = f"template_hansen_export_{aoi_io.get_aoi_name()}"
+    filename = f"template_hansen_export_{aoi_model.name}"
     
     # get the root folder of the user 
     folder = Path(ee.data.getAssetRoots()[0]['id'])
     asset_name = folder/filename
     
     # check if the asset already exist
-    if isAsset(str(asset_name), str(folder)):
+    if gee.is_asset(str(asset_name), str(folder)):
         raise Exception(cm.default_gee.asset_exist.format(asset_name))
         return asset_name
     
@@ -27,7 +26,7 @@ def export_dataset(aoi_io, scale, dataset):
         'description': filename,
         'assetId': str(asset_name),
         'scale': int(scale), 
-        'region': aoi_io.get_aoi_ee().geometry(),
+        'region': aoi_model.feature_collection.geometry(),
         'maxPixels': 1e13
     }
     
