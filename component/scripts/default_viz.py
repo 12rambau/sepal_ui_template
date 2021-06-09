@@ -5,13 +5,14 @@ import pandas as pd
 import ee
 import ipyvuetify as v
 from matplotlib import pyplot as plt
+from sepal_ui import color as sc
 
 from component.message import cm
 from component import parameter as cp
 
 ee.Initialize()
 
-def default_csv(output, pcnt, name):
+def default_csv(alert, pcnt, name):
     
     # the file will be written in the tmp directory 
     # prefer the use of the Path object than the os.path strings as specify in PEP 8 convention
@@ -26,7 +27,7 @@ def default_csv(output, pcnt, name):
     time.sleep(3)
     
     # let the user know that you managed to do something
-    output.add_live_msg(cm.default_process.end_computation, 'success')
+    alert.add_live_msg(cm.default_process.end_computation, 'success')
     
     return pathname
 
@@ -49,7 +50,7 @@ def default_hist(fig_hist):
             ax.hist(
                 x         = y, 
                 bins      = 25, 
-                color     = [v.theme.themes.dark.primary], 
+                color     = [sc.primary], 
                 histtype  = 'bar', 
                 stacked   = True, 
                 edgecolor ='black', 
@@ -70,7 +71,7 @@ def default_maps(ee_aoi, m):
     # add the object borders in blue 
     empty = ee.Image().byte()
     outline = empty.paint(featureCollection = ee_aoi, color = 1, width = 3)
-    m.addLayer(outline, {'palette': v.theme.themes.dark.info}, 'aoi') # I decided to use a color from the template
+    m.addLayer(outline, {'palette': sc.info}, 'aoi') # I decided to use a color from the template
     m.zoom_ee_object(ee_aoi.geometry())
     
     
