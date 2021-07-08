@@ -1,1 +1,10 @@
+# these libs are requested to build common python libs 
+# if you are an advance user and are sure to not use them you can comment the following lines
+wheel
+Cython
+pybind11
 
+# if you require GDAL and or pyproj in your module please uncomment these lines
+# there are set up to be inlined with SEPAL implementation of GDAL and PROJ version
+GDAL==3.0.4
+pyproj<3.0.0
