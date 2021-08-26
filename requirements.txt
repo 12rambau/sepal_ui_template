@@ -3,6 +3,7 @@
 wheel
 Cython
 pybind11
+pre-commit
 
 # if you require GDAL and or pyproj in your module please uncomment these lines
 # there are set up to be inlined with SEPAL implementation of GDAL and PROJ version
