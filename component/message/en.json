@@ -8,6 +8,7 @@
             "default_process": "Process",
             "default_result": "Results",
             "default_export": "Export",
+            "reclassify": "Reclassify",
             "about": "About"
         }
     },
