@@ -5,6 +5,7 @@
         "drawer_item": {
             "aoi": "Sélection d'AOI",
             "reclassify": "Reclassification",
+            "example": "Analyse",
             "about": "A propos"
         }
     }

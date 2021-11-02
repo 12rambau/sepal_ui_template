@@ -6,6 +6,7 @@
         "drawer_item": {
             "aoi": "AOI selection",
             "reclassify": "Reclassify",
+            "example": "Workflow",
             "about": "About"
         }
     }
