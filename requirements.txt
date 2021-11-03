@@ -12,4 +12,12 @@ pyproj<3.0.0
 
 # the base lib to run any sepal_ui based app 
 # don't forget to fix it to a specific version when you're app is ready
-sepal_ui
+sepal_ui==2.4.0
+
+
+# custom libs
+bqplot==0.12.31
+ipyvuetify==1.8.1
+ipywidgets==7.6.5
+numpy==1.17.4
+traitlets==5.1.1
