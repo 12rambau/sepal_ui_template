@@ -22,7 +22,7 @@ class ExampleTile(sw.Tile):
         # create the widgets
         w_slider = v.Slider(thumb_label="always", class_="mt-5", v_model=30)
 
-        styles = ["dashed", "solid", "dotted"]
+        styles = ["solid", "dashed", "dotted"]
         w_styles = v.Select(
             items=styles, label="line style", v_model=styles[0], class_="mb-2"
         )

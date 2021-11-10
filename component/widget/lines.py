@@ -1,5 +1,6 @@
 from bqplot import Figure, Lines, Axis, LinearScale
 from bqplot.interacts import BrushIntervalSelector
+from sepal_ui import color
 
 
 class ExLines(Figure):
@@ -10,7 +11,9 @@ class ExLines(Figure):
         y_sc = LinearScale()
 
         # create lines
-        self.lines = Lines(x=x, y=y, scales={"x": x_sc, "y": y_sc})
+        self.lines = Lines(
+            x=x, y=y, scales={"x": x_sc, "y": y_sc}, colors=color.primary
+        )
         ax_x = Axis(scale=x_sc)
         ax_y = Axis(scale=y_sc, orientation="vertical")
 

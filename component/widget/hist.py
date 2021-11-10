@@ -1,4 +1,5 @@
 from bqplot import Figure, Hist, Axis, LinearScale
+from sepal_ui import color
 
 
 class ExHist(Figure):
@@ -9,7 +10,13 @@ class ExHist(Figure):
         y_sc = LinearScale()
 
         # create hitogram
-        self.hist = Hist(sample=y, bins=25, scales={"sample": x_sc, "count": y_sc})
+        self.hist = Hist(
+            sample=y,
+            bins=25,
+            scales={"sample": x_sc, "count": y_sc},
+            colors=color.error,
+            stroke="gray",
+        )
         ax_x = Axis(scale=x_sc)
         ax_y = Axis(scale=y_sc, orientation="vertical")
 
