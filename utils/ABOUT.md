@@ -1,24 +1,13 @@
-## a first section 
+<img 
+    src="https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/img/sepal_header.png" 
+    alt="sepal-ecosystem-banner" 
+    width="100%" 
+/>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce placerat cursus felis et vestibulum. Donec quis ultrices ligula. Integer **dolor nunc**, molestie quis sem sit amet, volutpat vulputate lorem. Nullam ut ante nibh. Nulla pulvinar vel diam id efficitur. In a ligula viverra, aliquet nulla sed, accumsan metus. Sed vel magna et turpis sodales placerat eu at lectus. Aenean commodo ligula turpis, ut maximus libero pretium vitae. Nam ipsum nulla, hendrerit a arcu non, ornare pretium leo. Morbi ut lacus sed leo suscipit malesuada. Donec varius mi auctor diam condimentum egestas.  
+This module is a demonstration application, it has no functional value and the created files will be deleted periodically. 
 
-Integer blandit vitae ex sed facilisis. *Curabitur in eros commodo sem auctor maximus ac ac massa.* Ut fermentum consectetur massa, nec egestas sapien. Mauris cursus sem et eros auctor, et eleifend dui euismod. Vivamus lacinia porta augue, in luctus neque venenatis vitae. Nullam placerat efficitur turpis, eget bibendum sem imperdiet ut. Mauris viverra nibh sed aliquam egestas. Vestibulum vitae nibh id mi volutpat cursus eu eu lectus. Ut a augue nisi.  
+It presents in 3 panels the typical organization of an application based on the [`sepal_ui`](https://pypi.org/project/sepal-ui/) library.
 
-you can add code : 
-```py
-#some code 
-class foo:
-    def __init__():
-        self.toto = 10
-```
+The library is mainly directed towards geographic data analysis which explains the presence of a built-in AOI selector and a reclassification tool. The last panel shows a 100% python process to display graphs. 
 
-and lists :  
-  
-- itemList     
-- itemList      
-- itemList       
-
-even links like [sepal](https://github.com/openforis/)
-
-## a second section 
-
+To learn more about the library check out our [documentation](https://sepal-ui.readthedocs.io/en/latest/) and have a look at our [GitHub repository](https://github.com/12rambau/sepal_ui), we regularly publish new features.
