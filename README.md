@@ -10,7 +10,7 @@
 Fake application using the `sepal_ui` framework to create an interactive **Voila** dashboard.
 Go to the [sepal_ui repository](https://github.com/12rambau/sepal_ui) for more information about the components used in this template.
 
-![full_app](https://raw.githubusercontent.com/12rambau/sepal_ui/master/docs/img/sepal_ui_demo.gif)
+![full_app](https://raw.githubusercontent.com/12rambau/sepal_ui/master/docs/source/_image/sepal_ui_demo.gif)
 
 ## Usage 
 
@@ -45,6 +45,7 @@ master
 ├── no_aoi
 │   └── no_gee
 │       └── no_default
+│           └── default
 └── heroku
 ```
 
