@@ -1,0 +1,9 @@
+{
+    "app": {
+        "title": "Ma fausse application",
+        "footer": "vers l'infini et au-delà \u00A9 {}",
+        "drawer_item": {
+            "about": "A propos"
+        }
+    }
+}
