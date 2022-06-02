@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: psf/black@stable
         with:
-            version: "21.7b0"
+            version: 22.3.0
