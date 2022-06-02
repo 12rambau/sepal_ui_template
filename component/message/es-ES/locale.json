@@ -1,7 +1,7 @@
 {
     "app": {
         "title": "Mi falsa aplicación",
-        "footer": "hasta el infinito y más allá \u00A9 {}",
+        "footer": "Al infinito y más allá \u00A9 {}",
         "drawer_item": {
             "about": "Sobre nosotros"
         }
