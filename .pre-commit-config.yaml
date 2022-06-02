@@ -3,11 +3,15 @@ default_language_version:
 
 repos:
 -   repo: https://github.com/psf/black
-    rev: 8a59528c2d8ae1ef5f366039c728614aaf1a470b
+    rev: 22.3.0
     hooks:
     -   id: black
+        stages: [commit]
     -   id: black-jupyter
+        stages: [commit]
 -   repo: https://github.com/kynan/nbstripout
     rev: 0.5.0
     hooks:
     -   id: nbstripout
+        stages: [commit]
+        
