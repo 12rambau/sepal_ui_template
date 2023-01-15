@@ -1,3 +1,6 @@
+> **Note**  
+> :warning: The demo module have been redeployed to [railway](https://github.com/12rambau/panel_app) and `sepal-ui` is not depending on this repository to build the applications anymore. We still keep the public archive for documentation purposes. :warning:
+
 ![sepal_ui template](https://raw.githubusercontent.com/openforis/sepal-doc/master/docs/source/_images/sepal_header.png)
 
 # `sepal-ui` template app
